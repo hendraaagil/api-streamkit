@@ -15,8 +15,8 @@ app.get('/valorant', async (c) => {
   }
 
   const decodedUsername = decodeURIComponent(username)
-  const rank = data.rank.displayValue || 'Unranked'
-  const currentRank = rank + (rank.value ? ` (${rank.value})` : '')
+  const rank = data.rank.value ? data.rank.metadata.tierName : 'Unranked'
+  const currentRank = rank + (data.rank.value ? ` (${data.rank.value} RR)` : '')
   const peakRank = data.peakRank.displayValue || 'Unranked'
   const peakAct = data.peakRank.displayValue
     ? `(${data.peakRank.metadata.actName})`
