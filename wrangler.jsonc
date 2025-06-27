@@ -2,7 +2,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "api-streamkit",
   "main": "src/index.ts",
-  "compatibility_date": "2025-06-27"
+  "compatibility_date": "2025-06-27",
+  "routes": [
+    {
+      "pattern": "api.streamkit.hndr.xyz",
+      "custom_domain": true
+    }
+  ]
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
