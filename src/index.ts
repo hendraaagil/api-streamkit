@@ -15,15 +15,13 @@ app.get('/valorant', async (c) => {
   }
 
   const decodedUsername = decodeURIComponent(username)
-  const rank = data.rank.value ? data.rank.metadata.tierName : 'Unranked'
-  const currentRank = rank + (data.rank.value ? ` (${data.rank.value} RR)` : '')
-  const peakRank = data.peakRank.displayValue || 'Unranked'
-  const peakAct = data.peakRank.displayValue
-    ? `(${data.peakRank.metadata.actName})`
-    : ''
+  const rank = data.rank.metadata.tierName
+  const peakRank = `${data.peakRank.metadata.tierName} (${data.peakRank.metadata.actName})`
+  const { matchesWon, matchesLost, matchesTied } = data
+  const stats = `Wins: ${matchesWon.value}, Losses: ${matchesLost.value}, Ties: ${matchesTied.value}`
 
   return c.text(
-    `${decodedUsername} - ${currentRank} | Peak Rank: ${peakRank} ${peakAct}`,
+    `${decodedUsername} - ${rank} | ${stats} | Peak Rank: ${peakRank}`,
   )
 })
 

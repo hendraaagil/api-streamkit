@@ -45,8 +45,8 @@ export const fetchValorantProfile = async (username: string) => {
     const data = (await response.json()) as Record<string, any>
     if (data.data?.segments?.[0]) {
       const stats = data.data.segments[0].stats
-      const { rank, peakRank } = stats
-      return { rank, peakRank }
+      const { rank, peakRank, matchesWon, matchesLost, matchesTied } = stats
+      return { rank, peakRank, matchesWon, matchesLost, matchesTied }
     }
   } catch (error) {
     console.error('Fetch error:', error)
